@@ -31,10 +31,10 @@ public class PersonController {
 
         return totAges;
     }
-
-    @PostMapping("/add")
-    public String addPerson(@RequestBody Person person) {
-        personRepository.save(person);
-        return "Saved";
-    }
+    // TODO test post
+//    @PostMapping("/add")
+//    public String addPerson(@RequestBody Person person) {
+//        personRepository.save(person);
+//        return "Saved";
+//    }
 }
