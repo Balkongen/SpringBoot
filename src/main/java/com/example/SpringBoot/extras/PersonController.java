@@ -1,10 +1,9 @@
 package com.example.SpringBoot.extras;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,13 +27,20 @@ public class PersonController {
         for (Person p : persons) {
             totAges += p.getAge();
         }
-
         return totAges;
     }
-    // TODO test post
-//    @PostMapping("/add")
-//    public String addPerson(@RequestBody Person person) {
-//        personRepository.save(person);
-//        return "Saved";
-//    }
+
+    @RequestMapping(value = "/create", method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<Person> addPerson() {
+        try {
+            Person person = new Person("Ed", 76);
+            personRepository.save(person);
+            return new ResponseEntity<>(person, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            System.err.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 }

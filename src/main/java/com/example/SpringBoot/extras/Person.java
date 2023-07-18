@@ -9,12 +9,12 @@ public class Person {
     @Id
     private String id;
 
-    private int age;
     private String name;
+    private int age;
 
     public Person(String name, int age) {
-        this.age = age;
         this.name = name;
+        this.age = age;
     }
 
     public Person() {
@@ -32,8 +32,8 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id='" + id + '\'' +
-                ", age=" + age +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 '}';
     }
 
@@ -41,8 +41,8 @@ public class Person {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
 }
